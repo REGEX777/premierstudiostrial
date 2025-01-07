@@ -1,0 +1,22 @@
+{
+  "name": "premierstudiostrial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon .",
+    "build-css": "npx tailwindcss -i input.css -o ./public/css/output.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.9.3",
+    "tailwindcss": "^3.4.17"
+  },
+  "type": "module"
+}

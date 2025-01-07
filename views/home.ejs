@@ -1,0 +1,302 @@
+<%- include('partials/nav') -%>
+<div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-start pt-20 justify-center hidden">
+    <div
+        class="bg-white flex flex-col items-center justify-center rounded-lg shadow-lg p-6 w-[23%] max-w-md font-inter gap-3">
+        <div class="w-full flex items-center justify-end">
+            <button id="closeLoginForm"
+                class="h-10 w-10 rounded-lg flex items-center justify-center cursor-pointer hover:bg-[#F7F7F7] transition-all duration-150">
+                <p class="text-[#3B3C45] text-xl"><i class="fa-solid fa-xmark"></i></p>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center gap-5 w-full">
+
+            <p class="font-noto text-5xl">✍️</p>
+            <p class="text-xl font-semibold">Sign In to LOLVote</p>
+            <p class="text-[0.9rem] text-[#747686]">Welcome Back! Please Sign In to Continue.</p>
+
+            <form class="w-full flex flex-col items-center justify-center gap-5" action="/signin" method="post">
+                <input class="h-12 w-full rounded-lg border-[#EBEBEB] border-2 px-4" placeholder="Email" type="email"
+                    name="email" id="" required>
+                <input class="h-12 w-full rounded-lg border-[#EBEBEB] border-2 px-4" placeholder="Password"
+                    type="password" name="password" id="" required>
+            </form>
+
+            <button
+                class="w-full h-10 bg-gradient-to-b from-slate-700 to-slate-900 hover:bg-gradient-to-b hover:from-slate-800 hover:to-slate-700 transition-all duration-150 rounded-lg text-white">Continue
+                <i class="fa-solid fa-caret-right"></i></button>
+            <p class="text-[#747686]">Don't Have An Account? <a id="openSignupForm" class="font-semibold text-[#4B4D52]" href="#">Sign
+                    Up</a></p>
+        </div>
+    </div>
+</div>
+<div id="signupModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-start pt-20 justify-center hidden">
+    <div
+        class="bg-white flex flex-col items-center justify-center rounded-lg shadow-lg p-6 w-[23%] max-w-md font-inter gap-3">
+        <div class="w-full flex items-center justify-end">
+            <button id="closeSignupForm"
+                class="h-10 w-10 rounded-lg flex items-center justify-center cursor-pointer hover:bg-[#F7F7F7] transition-all duration-150">
+                <p class="text-[#3B3C45] text-xl"><i class="fa-solid fa-xmark"></i></p>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center gap-5 w-full">
+            <% if (messages.success) { %>
+                <div class="alert alert-success">
+                  <%= messages.success %>
+                </div>
+            <% } %>
+            <p class="font-noto text-5xl">📝</p>
+            <p class="text-xl font-semibold">Sign Up for LOLVote</p>
+            <p class="text-[0.9rem] text-[#747686]">Join us and start participating in polls today!</p>
+            
+            <form class="w-full flex flex-col items-center justify-center gap-5" action="/signup" method="post">
+                <input class="h-12 w-full rounded-lg border-[#EBEBEB] border-2 px-4" placeholder="Username" type="text"
+                    name="username" id="username" required>
+                <input class="h-12 w-full rounded-lg border-[#EBEBEB] border-2 px-4" placeholder="Email" type="email"
+                    name="email" id="email" required>
+                <input class="h-12 w-full rounded-lg border-[#EBEBEB] border-2 px-4" placeholder="Password"
+                    type="password" name="password" id="password" required>
+                <input class="h-12 w-full rounded-lg border-[#EBEBEB] border-2 px-4" placeholder="Confirm Password"
+                    type="password" name="confirm_password" id="confirm_password" required>
+                <p id="passwordError" class="text-red-500 text-sm hidden">Passwords do not match!</p>
+
+                <button type="submit" disabled
+                    class="w-full h-10 bg-gradient-to-b from-slate-700 to-slate-900 hover:bg-gradient-to-b disabled:cursor-not-allowed hover:from-slate-800 hover:to-slate-700 transition-all duration-150 rounded-lg text-white">
+                    Sign Up <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <p class="text-[#747686]">Already Have An Account? <a class="font-semibold text-[#4B4D52] openLoginForm" href="#">Sign
+                    In</a></p>
+        </div>
+    </div>
+</div>
+<div class="flex flex-col items-center justify-center gap-5">
+    <div class="w-[90%] flex flex-col gap-5 items-center justify-center font-inter">
+        <div class="w-full items-center justify-start flex">
+            <p class="text-3xl font-semibold">Active Polls</p>
+        </div>
+        <div class="w-full grid grid-cols-4 gap-4">
+            <div
+                class="w-full flex flex-col items-center justify-center min-h-[20rem] py-5 rounded-lg border-[#F0F0FF] border-2 bg-white">
+                <div class="w-[90%] flex flex-col items-start justify-center gap-3">
+                    <p class="text-[1.35rem] font-bold">What should I wear in my friends birthday party?</p>
+                    <p class="text-[0.95rem] text-[#626262]">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex <span
+                            class="text-[#006FFF]">...more</span></p>
+                    <p class="text-[0.95rem] text-[#626262] font-medium">Poll Ends On: <span class="text-[#000000]">3:12
+                            PM, 12th January 2025</span></p>
+                    <a href="#"
+                        class="w-full h-10 rounded-lg flex items-center justify-center bg-[#4681F4] text-white font-medium transition-all duration-150 cursor-pointer hover:bg-[#3058a8]">Vote</a>
+                </div>
+            </div>
+            <div
+                class="w-full flex flex-col items-center justify-center min-h-[20rem] py-5 rounded-lg border-[#F0F0FF] border-2 bg-white">
+                <div class="w-[90%] flex flex-col items-start justify-center gap-3">
+                    <p class="text-[1.35rem] font-bold">What should I wear in my friends birthday party?</p>
+                    <p class="text-[0.95rem] text-[#626262]">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex <span
+                            class="text-[#006FFF]">...more</span></p>
+                    <p class="text-[0.95rem] text-[#626262] font-medium">Poll Ends On: <span class="text-[#000000]">3:12
+                            PM, 12th January 2025</span></p>
+                    <a href="#"
+                        class="w-full h-10 rounded-lg flex items-center justify-center bg-[#4681F4] text-white font-medium transition-all duration-150 cursor-pointer hover:bg-[#3058a8]">Vote</a>
+                </div>
+            </div>
+            <div
+                class="w-full flex flex-col items-center justify-center min-h-[20rem] py-5 rounded-lg border-[#F0F0FF] border-2 bg-white">
+                <div class="w-[90%] flex flex-col items-start justify-center gap-3">
+                    <p class="text-[1.35rem] font-bold">What should I wear in my friends birthday party?</p>
+                    <p class="text-[0.95rem] text-[#626262]">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex <span
+                            class="text-[#006FFF]">...more</span></p>
+                    <p class="text-[0.95rem] text-[#626262] font-medium">Poll Ends On: <span class="text-[#000000]">3:12
+                            PM, 12th January 2025</span></p>
+                    <a href="#"
+                        class="w-full h-10 rounded-lg flex items-center justify-center bg-[#4681F4] text-white font-medium transition-all duration-150 cursor-pointer hover:bg-[#3058a8]">Vote</a>
+                </div>
+            </div>
+            <div
+                class="w-full flex flex-col items-center justify-center min-h-[20rem] py-5 rounded-lg border-[#F0F0FF] border-2 bg-white">
+                <div class="w-[90%] flex flex-col items-start justify-center gap-3">
+                    <p class="text-[1.35rem] font-bold">What should I wear in my friends birthday party?</p>
+                    <p class="text-[0.95rem] text-[#626262]">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex <span
+                            class="text-[#006FFF]">...more</span></p>
+                    <p class="text-[0.95rem] text-[#626262] font-medium">Poll Ends On: <span class="text-[#000000]">3:12
+                            PM, 12th January 2025</span></p>
+                    <a href="#"
+                        class="w-full h-10 rounded-lg flex items-center justify-center bg-[#4681F4] text-white font-medium transition-all duration-150 cursor-pointer hover:bg-[#3058a8]">Vote</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-[90%] flex flex-col gap-5 items-center justify-center font-inter">
+        <div class="w-full items-center justify-start flex">
+            <p class="text-3xl font-semibold">Ended Polls</p>
+        </div>
+        <div class="w-full grid grid-cols-4 gap-4">
+            <div
+                class="w-full flex flex-col items-center justify-center min-h-[20rem] py-5 rounded-lg border-[#F0F0FF] border-2 bg-white">
+                <div class="w-[90%] flex flex-col items-start justify-center gap-3">
+                    <p class="text-[1.35rem] font-bold">What should I wear in my friends birthday party?</p>
+                    <p class="text-[0.95rem] text-[#626262]">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex <span
+                            class="text-[#006FFF]">...more</span></p>
+                    <p class="text-[0.95rem] text-[#626262] font-medium">Poll Ends On: <span class="text-[#000000]">3:12
+                            PM, 12th January 2025</span></p>
+                    <a href="#"
+                        class="w-full h-10 rounded-lg flex items-center justify-center bg-[#4681F4] text-white font-medium transition-all duration-150 cursor-pointer hover:bg-[#3058a8]">Vote</a>
+                </div>
+            </div>
+            <div
+                class="w-full flex flex-col items-center justify-center min-h-[20rem] py-5 rounded-lg border-[#F0F0FF] border-2 bg-white">
+                <div class="w-[90%] flex flex-col items-start justify-center gap-3">
+                    <p class="text-[1.35rem] font-bold">What should I wear in my friends birthday party?</p>
+                    <p class="text-[0.95rem] text-[#626262]">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex <span
+                            class="text-[#006FFF]">...more</span></p>
+                    <p class="text-[0.95rem] text-[#626262] font-medium">Poll Ends On: <span class="text-[#000000]">3:12
+                            PM, 12th January 2025</span></p>
+                    <a href="#"
+                        class="w-full h-10 rounded-lg flex items-center justify-center bg-[#4681F4] text-white font-medium transition-all duration-150 cursor-pointer hover:bg-[#3058a8]">Vote</a>
+                </div>
+            </div>
+            <div
+                class="w-full flex flex-col items-center justify-center min-h-[20rem] py-5 rounded-lg border-[#F0F0FF] border-2 bg-white">
+                <div class="w-[90%] flex flex-col items-start justify-center gap-3">
+                    <p class="text-[1.35rem] font-bold">What should I wear in my friends birthday party?</p>
+                    <p class="text-[0.95rem] text-[#626262]">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex <span
+                            class="text-[#006FFF]">...more</span></p>
+                    <p class="text-[0.95rem] text-[#626262] font-medium">Poll Ends On: <span class="text-[#000000]">3:12
+                            PM, 12th January 2025</span></p>
+                    <a href="#"
+                        class="w-full h-10 rounded-lg flex items-center justify-center bg-[#4681F4] text-white font-medium transition-all duration-150 cursor-pointer hover:bg-[#3058a8]">Vote</a>
+                </div>
+            </div>
+            <div
+                class="w-full flex flex-col items-center justify-center min-h-[20rem] py-5 rounded-lg border-[#F0F0FF] border-2 bg-white">
+                <div class="w-[90%] flex flex-col items-start justify-center gap-3">
+                    <p class="text-[1.35rem] font-bold">What should I wear in my friends birthday party?</p>
+                    <p class="text-[0.95rem] text-[#626262]">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex <span
+                            class="text-[#006FFF]">...more</span></p>
+                    <p class="text-[0.95rem] text-[#626262] font-medium">Poll Ends On: <span class="text-[#000000]">3:12
+                            PM, 12th January 2025</span></p>
+                    <a href="#"
+                        class="w-full h-10 rounded-lg flex items-center justify-center bg-[#4681F4] text-white font-medium transition-all duration-150 cursor-pointer hover:bg-[#3058a8]">Vote</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script>
+const loginButtons = document.querySelectorAll('.openLoginForm');
+const closeLoginForm = document.getElementById('closeLoginForm');
+const loginModal = document.getElementById('loginModal');
+const signupButton = document.querySelector('button[type="submit"]'); // Assuming the signup button is a submit button
+const openSignupForm = document.getElementById('openSignupForm');
+const closeSignupForm = document.getElementById('closeSignupForm');
+const signupModal = document.getElementById('signupModal');
+
+loginButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        loginModal.classList.remove('hidden');
+        loginModal.classList.add('flex'); // Ensure modal is displayed properly
+        signupModal.classList.add('hidden'); // Hide the signup modal if open
+        signupModal.classList.remove('flex');
+    });
+});
+
+// Close the login modal
+closeLoginForm.addEventListener('click', () => {
+    loginModal.classList.add('hidden');
+    loginModal.classList.remove('flex');
+});
+
+// Open the signup modal
+openSignupForm.addEventListener('click', () => {
+    signupModal.classList.remove('hidden');
+    signupModal.classList.add('flex'); // Ensure modal is displayed properly
+    loginModal.classList.add('hidden'); // Hide the login modal if open
+    loginModal.classList.remove('flex');
+    
+    // Set flag in localStorage when opening signup form
+    localStorage.setItem('isSignupFormVisible', 'true');
+});
+
+window.addEventListener('load', () => {
+    const isSignupFormVisible = localStorage.getItem('isSignupFormVisible');
+    if (isSignupFormVisible === 'true') {
+        // Show the signup form if the flag is set
+        signupModal.classList.remove('hidden');
+        signupModal.classList.add('flex');
+    }
+
+    // Check for a flash message in sessionStorage
+    const flashMessage = sessionStorage.getItem('flashMessage');
+    if (flashMessage) {
+        // Display the flash message on the page
+        displayFlashMessage(flashMessage); // Replace with your actual function to display flash messages
+        
+        // Remove the flash message after it's displayed
+        sessionStorage.removeItem('flashMessage');
+    }
+});
+
+// Close the signup modal
+closeSignupForm.addEventListener('click', () => {
+    signupModal.classList.add('hidden');
+    signupModal.classList.remove('flex');
+    
+    // Remove from localStorage when closing form manually
+    localStorage.removeItem('isSignupFormVisible');
+});
+
+// Close login modal by clicking outside of it
+window.addEventListener('click', (e) => {
+    if (e.target === loginModal) {
+        loginModal.classList.add('hidden');
+        loginModal.classList.remove('flex');
+    }
+});
+
+// Close signup modal by clicking outside of it
+window.addEventListener('click', (e) => {
+    if (e.target === signupModal) {
+        signupModal.classList.add('hidden');
+        signupModal.classList.remove('flex');
+        
+        // Remove from localStorage when clicking outside
+        localStorage.removeItem('isSignupFormVisible');
+    }
+});
+
+const passwordInput = document.getElementById('password');
+const confirmPasswordInput = document.getElementById('confirm_password');
+const passwordError = document.getElementById('passwordError');
+
+// Listen for real-time input events
+confirmPasswordInput.addEventListener('input', () => {
+    if (passwordInput.value !== confirmPasswordInput.value) {
+        passwordError.classList.remove('hidden'); // Show error message
+        signupButton.disabled = true; // Disable button if passwords don't match
+    } else {
+        passwordError.classList.add('hidden'); // Hide error message if passwords match
+        signupButton.disabled = false; // Enable button when passwords match
+    }
+});
+</script>
+
+</html>
